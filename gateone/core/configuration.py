@@ -552,6 +552,13 @@ def define_options(installed=True, cli_commands=None):
                " redirects users to the configured port using HTTPS.")
     )
     define(
+        "base_url",
+        default="",
+        group='gateone',
+        help=_("Reverse proxy base url."),
+        type=basestring
+    )
+    define(
         "url_prefix",
         default="/",
         group='gateone',

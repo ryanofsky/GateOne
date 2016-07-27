@@ -312,6 +312,8 @@ class GoogleAuthHandler(BaseAuthHandler, tornado.auth.GoogleOAuth2Mixin):
         if uri_port in self.base_url:
             # Get rid of the port (will be added automatically)
             self.base_url = self.base_url.replace(uri_port, '/', 1)
+        if self.settings['base_url']:
+            self.base_url = self.settings['base_url'] + self.settings['url_prefix']
         redirect_uri = "{base_url}auth".format(base_url=self.base_url)
         check = self.get_argument("check", None)
         if check:

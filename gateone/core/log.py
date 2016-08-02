@@ -156,7 +156,7 @@ def go_logger(name, **kwargs):
                 preserve = handler
     # Remove any existing handlers on the logger
     logger.handlers = []
-    if preserve: # Add back the one we preserved (if any)
+    if preserve and (options.log_to_stderr or options.log_to_stderr is None): # Add back the one we preserved (if any)
         logger.handlers.append(preserve)
     logger.setLevel(getattr(logging, options.logging.upper()))
     if options.log_file_prefix:
